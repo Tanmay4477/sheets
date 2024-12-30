@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Sheet" ALTER COLUMN "content" DROP NOT NULL,
+ALTER COLUMN "lastUpdateId" DROP NOT NULL;
