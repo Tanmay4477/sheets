@@ -18,6 +18,7 @@ app.post("/signup", async (req: Request, res: Response) => {
             password
         }
     });
+    console.log(user);
 
     if(!user) {
         res.status(403).json({
@@ -68,9 +69,10 @@ app.post("/signin", async (req: Request, res: Response) => {
 app.post("/sheet", async (req: Request, res: Response) => {
     const title: string = req.body.title;
     const slug: string = req.body.slug;
-    const userId: string = req.body.userId;
+    const userId: number = req.body.userId;
 
     try {
+        console.log(title, slug, userId);
         const sheet = await prismaClient.sheet.create({
             data: {
                 title,
@@ -78,6 +80,7 @@ app.post("/sheet", async (req: Request, res: Response) => {
                 userId
             }
         });
+        console.log(sheet, "sjeey")
         if(!sheet) {
             res.status(400).json({
                 msg: "Sheet not created"
